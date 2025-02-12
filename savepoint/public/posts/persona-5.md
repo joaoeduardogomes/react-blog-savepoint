@@ -1,3 +1,8 @@
+---
+title: "Persona 5: A Masterpiece of Style and Substance"
+date: "2025-02-12"
+---
+
 # Persona 5: A Masterpiece of Style and Substance
 
 Few games manage to leave as lasting an impression as *Persona 5*. Developed by Atlus, this critically acclaimed JRPG blends deep storytelling, stylish aesthetics, and engaging turn-based combat into an unforgettable experience. Even years after its release, *Persona 5* continues to be a gold standard in the genre. But what exactly makes this game so special?

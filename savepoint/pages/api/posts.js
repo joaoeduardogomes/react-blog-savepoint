@@ -8,24 +8,23 @@ export default function handler(req, res) {
     const files = fs.readdirSync(postsDirectory)
 
     const posts = files.map((file) => {
+        const slug = file.replace(".md", "")
         const filePath = path.join(postsDirectory, file)
-        
-        // Read the content of the Markdown file
-        const fileContent = fs.readFileSync(filePath, 'utf8')
+        const fileContent = fs.readFileSync(filePath, 'utf-8')
 
-        // Use gray-matter to parse the Markdown front matter (if any) and content
-        const { content } = matter(fileContent)
+        const { data, content } = matter(fileContent) // Extract metadata and content using gray-matter
         
-        // Extract the first line as the title (assuming it starts with an H1)
-        const firstLine = content.split('\n')[0].replace("# ", "") // Remove the # from the heading
-        
-        const slug = file.replace(".md", "").replace(".jsx", "")
         return {
-            title: firstLine || slug.replace("-", " "), // Default to slug if no H1 found
-            image: `/game-imgs/${slug}.jpg`, // Assuming images are named after the slugs
-            slug: slug
+            title: data.title || slug.replace("-", " "), // Use the title from the front matter or fallback to the slug
+            image: `/game-imgs/${slug}.jpg`, // Assuming images are named after the slug
+            slug: slug,
+            date: data.date || "Unknown", // Add the date from front matter
+            content: content // Store the content of the post (if you want to display it elsewhere)
         }
     })
+
+    // Sort posts by date if available
+    posts.sort((a, b) => new Date(b.date) - new Date(a.date)) // Sort by date (newest first)
 
     res.status(200).json(posts)
 }

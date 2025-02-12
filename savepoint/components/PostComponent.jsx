@@ -1,28 +1,39 @@
 import Page from '@/components/Page'
 import React, { useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
+import matter from 'gray-matter'  // Use default import
 
-const PostComponent = (props) => {
+const PostComponent = ({ title }) => {
     const [content, setContent] = useState("")
+    const [metadata, setMetadata] = useState({})
 
     useEffect(() => {
-        fetch(`/posts/${props.title}.md`)
+        fetch(`/posts/${title}.md`)
             .then(res => res.text())
-            .then(text => setContent(text))
+            .then(text => {
+                const { data, content } = matter(text)  // Use the default import here
+                setMetadata(data)  // Store the metadata
+                setContent(content)  // Store the content
+            })
             .catch(error => console.error("Error loading markdown:", error))
-    }, [props.title]) // Dependency on props.title so it reloads when title changes
+    }, [title])
 
-    let newDate = new Date()
-    let day = newDate.getDate()
-    let month = newDate.getMonth() + 1
-    let year = newDate.getFullYear()
+    // Format the date
+    const formatDate = (dateString) => {
+        const date = new Date(dateString)
+        const day = date.getDate() + 1
+        const month = date.getMonth() + 1
+        const year = date.getFullYear()
+        return `${month}/${day}/${year}`  // You can adjust this format as needed
+    }
 
     return (
         <Page>
-            <p>Date: {month}/{day}/{year}</p>
+            {/* Display the metadata date */}
+            <p>Date: {metadata.date ? formatDate(metadata.date) : "No date available"}</p>
 
             <main className='postArea'>
-                <img src={`/game-imgs/${props.title}.jpg`} alt={`${props.title} banner`} className='postImg' />
+                <img src={`/game-imgs/${title}.jpg`} alt={`${title} banner`} className='postImg' />
                 <ReactMarkdown>
                     {content}
                 </ReactMarkdown>

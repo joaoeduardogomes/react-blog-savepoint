@@ -21,9 +21,10 @@ export default function Home() {
         <div className="d-flex flex-wrap gap-3">
           {posts.map(post => (
             <Card key={post.slug} style={{ width: '18rem' }}>
-              <Card.Img variant="top" src={post.image} height={150} />
+              <Card.Img variant="top" src={post.image} />
               <Card.Body>
                 <Card.Title>{post.title}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">{post.date}</Card.Subtitle>
                 <Link href={`/posts/${post.slug}`} passHref>
                   <Button variant="primary">Read Post</Button>
                 </Link>
@@ -31,7 +32,6 @@ export default function Home() {
             </Card>
           ))}
         </div>
-
       </Page>
     </>
   );
