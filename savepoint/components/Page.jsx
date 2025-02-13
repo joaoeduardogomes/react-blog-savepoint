@@ -23,7 +23,7 @@ const Page = (props) => {
                 </Container>
             </Navbar>
 
-            <Container className='mt-3'>
+            <Container className='contentContainer my-3 bg-light p-5 rounded'>
                 {props.children}
             </Container>
         </>
