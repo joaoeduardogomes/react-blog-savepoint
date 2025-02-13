@@ -15,11 +15,11 @@ export default function handler(req, res) {
         const { data, content } = matter(fileContent) // Extract metadata and content using gray-matter
         
         return {
-            title: data.title || slug.replace("-", " "), // Use the title from the front matter or fallback to the slug
-            image: `/game-imgs/${slug}.jpg`, // Assuming images are named after the slug
+            title: data.title || slug.replace("-", " "),
+            image: `/game-imgs/${slug}.jpg`,
             slug: slug,
-            date: data.date || "Unknown", // Add the date from front matter
-            content: content // Store the content of the post (if you want to display it elsewhere)
+            date: data.date || "Unknown",
+            content: content
         }
     })
 

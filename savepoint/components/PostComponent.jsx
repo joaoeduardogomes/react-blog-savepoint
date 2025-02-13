@@ -1,7 +1,7 @@
 import Page from '@/components/Page'
 import React, { useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
-import matter from 'gray-matter'  // Use default import
+import matter from 'gray-matter' 
 
 const PostComponent = ({ title }) => {
     const [content, setContent] = useState("")
@@ -24,12 +24,11 @@ const PostComponent = ({ title }) => {
         const day = date.getDate() + 1
         const month = date.getMonth() + 1
         const year = date.getFullYear()
-        return `${month}/${day}/${year}`  // You can adjust this format as needed
+        return `${month}/${day}/${year}`
     }
 
     return (
         <Page>
-            {/* Display the metadata date */}
             <p>Date: {metadata.date ? formatDate(metadata.date) : "No date available"}</p>
 
             <main className='postArea'>
