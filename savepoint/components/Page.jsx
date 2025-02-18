@@ -4,7 +4,7 @@ import { Container, Nav, Navbar } from 'react-bootstrap'
 const Page = (props) => {
     return (
         <>
-            <Navbar bg="" data-bs-theme="dark" style={{ backgroundColor: "#1956B4"}}>
+            <Navbar bg="" data-bs-theme="dark" className='d-flex flex-wrap' style={{ backgroundColor: "#1956B4"}}>
                 <Container>
                     <Navbar.Brand href="/">
                         <img
