@@ -15,6 +15,7 @@ export default function handler(req, res) {
         return {
             title: data.title || file.replace(".md", "").replace("-", " "), 
             date: data.date || "Unknown Date",
+            tags: data.tags || [],
             image: `/game-imgs/${file.replace(".md", "")}.jpg`,
             slug: file.replace(".md", "")
         }

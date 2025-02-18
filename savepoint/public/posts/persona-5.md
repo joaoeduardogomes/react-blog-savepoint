@@ -1,6 +1,7 @@
 ---
 title: "Persona 5: A Masterpiece of Style and Substance"
 date: "2025-02-12"
+tags: ["strategy", "rpg", "persona", "atlus"]
 ---
 
 # Persona 5: A Masterpiece of Style and Substance

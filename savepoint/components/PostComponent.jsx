@@ -30,6 +30,7 @@ const PostComponent = ({ title }) => {
     return (
         <Page>
             <p>Date: {metadata.date ? formatDate(metadata.date) : "No date available"}</p>
+            <p>Tags: {metadata.tags ? metadata.tags.join(", ") : "No tags available"}</p>
 
             <main className='postArea'>
                 <img src={`/game-imgs/${title}.jpg`} alt={`${title} banner`} className='postImg' />
