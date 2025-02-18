@@ -17,7 +17,7 @@ export default function handler(req, res) {
             date: data.date || "Unknown Date",
             tags: data.tags || [],
             image: `/game-imgs/${file.replace(".md", "")}.jpg`,
-            slug: file.replace(".md", "")
+            slug: file.replace(".md", "").replace("&", "")
         }
     })
 

@@ -17,11 +17,11 @@ export default function Home() {
   return (
     <>
       <Page>
-        <h1>Posts</h1>
-        <div className="d-flex flex-wrap gap-3">
+        <h1 className="text-center">Posts</h1>
+        <div className="d-flex flex-wrap justify-content-center gap-4">
           {posts.map(post => (
             <Card key={post.slug} style={{ width: '18rem' }}>
-              <Card.Img variant="top" src={post.image} />
+              <Card.Img variant="top" src={post.image} height={160} />
               <Card.Body>
                 <Card.Title>{post.title}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">{post.date}</Card.Subtitle>
