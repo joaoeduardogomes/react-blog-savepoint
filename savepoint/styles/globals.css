@@ -14,3 +14,25 @@ body {
   height: 100%;
   box-shadow: 2px 2px 6px 8px #30303025;
 }
+
+@media screen and (max-width: 768px) {
+  .list-card {
+    flex-wrap: wrap;
+
+    img {
+      width: 100% !important;
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .list-card 
+  
+  .card-title {
+    font-size: 1rem !important;
+  }
+
+  .card-subtitle, .link {
+    font-size: 0.8rem !important;
+  }
+}
