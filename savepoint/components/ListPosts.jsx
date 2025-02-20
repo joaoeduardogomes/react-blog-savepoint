@@ -20,7 +20,7 @@ export default function ListPosts({postsFilter = "", message=""}) {
                         <Card key={post.slug}
                             className="list-card d-flex flex-row shadow-sm"
                         >
-                            <Card.Img variant="top" src={post.image}  />
+                            <Card.Img variant="top" src={post.image} className="w-50"/>
                             <Card.Body className="d-flex flex-column justify-content-between">
                                 <Card.Title className="fw-bold">{post.title}</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted">{post.date}</Card.Subtitle>
