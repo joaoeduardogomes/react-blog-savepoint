@@ -25,7 +25,7 @@ export default function ListPosts({postsFilter = "", message=""}) {
                                 <Card.Title className="fw-bold">{post.title}</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted">{post.date}</Card.Subtitle>
                                 <Link href={`/posts/${post.category}/${post.slug}`} passHref>
-                                    <Button variant="primary w-100" className="link">
+                                    <Button variant="dark w-100" className="link">
                                         Read Post
                                     </Button>
                                 </Link>
@@ -36,7 +36,7 @@ export default function ListPosts({postsFilter = "", message=""}) {
 
             {!isAllPostsVisible && (
                 <div className="d-flex justify-content-center mt-3">
-                    <Button variant="dark" onClick={loadMorePosts}>
+                    <Button variant="warning" onClick={loadMorePosts}>
                         Load More
                     </Button>
                 </div>

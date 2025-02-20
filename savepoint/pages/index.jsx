@@ -19,7 +19,7 @@ export default function Home() {
                 <Card.Title className="fw-semiold">{post.title}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">{post.date}</Card.Subtitle>
                 <Link href={`/posts/${post.category}/${post.slug}`} passHref>
-                  <Button variant="primary w-100">Read Post</Button>
+                  <Button variant="dark w-100">Read Post</Button>
                 </Link>
               </Card.Body>
             </Card>
@@ -28,7 +28,7 @@ export default function Home() {
 
         {!isAllPostsVisible && (
           <div className="d-flex justify-content-center mt-3">
-          <Button variant="dark" onClick={loadMorePosts}>
+          <Button variant="warning" onClick={loadMorePosts}>
             Load More
           </Button>
         </div>
