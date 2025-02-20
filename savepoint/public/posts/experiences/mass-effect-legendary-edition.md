@@ -2,6 +2,7 @@
 title: "Mass Effect Legendary Edition – A Timeless Space Epic Reborn"
 date: "2025-02-18"
 tags: ["rpg", "action", "space", "bioware", "sci-fi"]
+img: "mass-effect-legendary-edition.jpg"
 ---
 
 # Mass Effect Legendary Edition – A Timeless Space Epic Reborn

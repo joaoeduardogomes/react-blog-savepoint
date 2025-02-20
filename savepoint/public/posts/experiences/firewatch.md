@@ -2,6 +2,7 @@
 title: "Firewatch – A Lonely Yet Beautiful Journey into the Wilderness"
 date: "2025-01-25"
 tags: ["adventure", "indie", "firewatch", "narrative"]
+img: "firewatch.jpg"
 ---
 
 # Firewatch – A Lonely Yet Beautiful Journey into the Wilderness

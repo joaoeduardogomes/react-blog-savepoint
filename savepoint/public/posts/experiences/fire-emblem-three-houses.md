@@ -2,6 +2,7 @@
 title: "Fire Emblem: Three Houses – A Personal Journey into Strategy and Choices"
 date: "2025-02-18"
 tags: ["strategy", "rpg", "fire emblem", "nintendo"]
+img: "fire-emblem-three-houses.jpg"
 ---
 
 # Fire Emblem: Three Houses – A Personal Journey into Strategy and Choices

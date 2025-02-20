@@ -30,14 +30,14 @@ export default function Home() {
     <>
       <Page>
         <h1 className="text-center">Posts</h1>
-        <div className="d-flex flex-wrap justify-content-start gap-4">
+        <div className="container d-flex flex-wrap justify-content-center gap-4">
           {posts.slice(0, visiblePosts).map(post => (
             <Card key={post.slug} style={{ width: '18rem' }}>
               <Card.Img variant="top" src={post.image} height={160} />
               <Card.Body className="d-flex flex-column justify-content-between">
                 <Card.Title>{post.title}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">{post.date}</Card.Subtitle>
-                <Link href={`/posts/${post.slug}`} passHref>
+                <Link href={`/posts/${post.category}/${post.slug}`} passHref>
                   <Button variant="primary w-100">Read Post</Button>
                 </Link>
               </Card.Body>

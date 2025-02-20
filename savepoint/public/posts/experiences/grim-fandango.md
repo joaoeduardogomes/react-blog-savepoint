@@ -2,6 +2,7 @@
 title: "Grim Fandango – A Timeless Classic in Gaming History"
 date: "2025-02-12"
 tags: ["adventure", "grim fandango", "point and click", "classic"]
+img: "grim-fandango.jpg"
 ---
 
 # Grim Fandango – A Timeless Classic in Gaming History

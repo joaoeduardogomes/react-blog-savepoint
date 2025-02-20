@@ -2,6 +2,7 @@
 title: "Pokémon Black & White – A New Era for the Pokémon Franchise"
 date: "2025-02-10"
 tags: ["rpg", "pokemon", "black and white", "nintendo"]
+img: "pokemon-black-white.jpg"
 ---
 
 # Pokémon Black & White – A New Era for the Pokémon Franchise

@@ -2,6 +2,7 @@
 title: "The Last of Us: A Journey of Survival and Emotion"
 date: "2025-02-10"
 tags: ["action", "adventure", "the last of us", "playstation"]
+img: "the-last-of-us.jpg"
 ---
 
 # The Last of Us: A Journey of Survival and Emotion

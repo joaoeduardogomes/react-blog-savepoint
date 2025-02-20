@@ -3,20 +3,20 @@ import React, { useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import matter from 'gray-matter' 
 
-const PostComponent = ({ title }) => {
+const PostComponent = ({ title, image, category }) => {
     const [content, setContent] = useState("")
     const [metadata, setMetadata] = useState({})
 
     useEffect(() => {
-        fetch(`/posts/${title}.md`)
+        fetch(`/posts/${category}/${title}.md`)
             .then(res => res.text())
             .then(text => {
-                const { data, content } = matter(text)  // Use the default import here
-                setMetadata(data)  // Store the metadata
-                setContent(content)  // Store the content
+                const { data, content } = matter(text)
+                setMetadata(data)
+                setContent(content)
             })
             .catch(error => console.error("Error loading markdown:", error))
-    }, [title])
+    }, [category, title])
 
     // Format the date
     const formatDate = (dateString) => {
@@ -33,7 +33,7 @@ const PostComponent = ({ title }) => {
             <p>Tags: {metadata.tags ? metadata.tags.join(", ") : "No tags available"}</p>
 
             <main className='postArea'>
-                <img src={`/game-imgs/${title}.jpg`} alt={`${title} banner`} className='postImg' />
+                <img src={`/game-imgs/${metadata.img}`} alt={`${title} banner`} className='postImg' />
                 <ReactMarkdown>
                     {content}
                 </ReactMarkdown>
@@ -41,5 +41,6 @@ const PostComponent = ({ title }) => {
         </Page>
     )
 }
+
 
 export default PostComponent
