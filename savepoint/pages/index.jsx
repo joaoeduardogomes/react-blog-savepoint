@@ -13,7 +13,7 @@ export default function Home() {
         <h1 className="text-center">Posts</h1>
         <div className="container d-flex flex-wrap justify-content-center gap-4">
           {posts.slice(0, visiblePosts).map(post => (
-            <Card key={post.slug} style={{ width: '18rem' }}>
+            <Card key={post.slug} style={{ width: '18rem' }} className="shadow-sm">
               <Card.Img variant="top" src={post.image} height={160} />
               <Card.Body className="d-flex flex-column justify-content-between">
                 <Card.Title className="fw-semiold">{post.title}</Card.Title>

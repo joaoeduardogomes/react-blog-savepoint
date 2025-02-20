@@ -12,7 +12,13 @@ body {
 
 .contentContainer {
   height: 100%;
-  box-shadow: 2px 2px 6px 8px #30303025;
+}
+
+.list-card {
+  width: 50rem;
+  img {
+    width: 50%;
+  }
 }
 
 @media screen and (max-width: 768px) {
