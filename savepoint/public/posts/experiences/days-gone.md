@@ -1,7 +1,7 @@
 ---
 title: "Days Gone – A Tale of Survival in a Post-Apocalyptic World"
 date: "2025-02-18"
-tags: ["action", "adventure", "zombies", "open-world", "survival"]
+tags: ["action", "adventure", "zombies", "open-world", "survival", "days gone"]
 img: "days-gone.jpg"
 ---
 

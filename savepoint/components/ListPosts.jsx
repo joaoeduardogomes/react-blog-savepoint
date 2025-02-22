@@ -3,18 +3,28 @@ import usePosts from "@/hooks/usePosts";
 import Link from "next/link";
 import { Button, Card } from "react-bootstrap";
 
-export default function ListPosts({postsFilter = "", message=""}) {
+export default function ListPosts({pageName = "erro", postsFilter = "", query = "", message=""}) {
 
     const { posts, visiblePosts, isAllPostsVisible, loadMorePosts } = usePosts(10, 10);
 
+    const normalizedQuery = query ? query.replace(/['\u2019]/g, '') : '';
+    const regex = normalizedQuery ? new RegExp(normalizedQuery, 'i') : null;
+
     return (
         <Page>
-            <h1 className="mb-3 text-center">Experiences</h1>
+            <h1 className="mb-3 text-center">{pageName}</h1>
             <p className="mb-5 text-center">{message}</p>
 
             <div className="container d-flex flex-wrap justify-content-center gap-4">
                 {posts
-                    .filter(post => post.category === postsFilter)
+                    .filter(post => {
+                        if (!query) {
+                            return post.category === postsFilter;
+                        }
+    
+                        const normalizedTags = post.tags.map(tag => tag.replace(/['\u2019]/g, ''));
+                        return (post.category === postsFilter || normalizedTags.some(tag => regex.test(tag)));
+                    })
                     .slice(0, visiblePosts)
                     .map(post => (
                         <Card key={post.slug}

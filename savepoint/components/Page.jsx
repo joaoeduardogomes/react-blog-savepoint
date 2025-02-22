@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Container, Form, Nav, Navbar } from 'react-bootstrap'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
+import { useRouter } from 'next/router';
 
 const Page = (props) => {
+    const router = useRouter();
+    const [searchTerm, setSearchTerm] = useState('');
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        router.push(`/q=${searchTerm}`)
+    }
+    
     return (
         <>
             <Navbar bg="" data-bs-theme="dark" className='d-flex flex-wrap' style={{ backgroundColor: "#1956B4"}}>
@@ -22,8 +31,8 @@ const Page = (props) => {
                         <Nav.Link href="/lists">Lists</Nav.Link>
                     </Nav>
 
-                    <Form className='d-flex'>
-                        <Form.Control type="text" placeholder="Search" />
+                    <Form className='d-flex' onSubmit={handleSubmit}>
+                        <Form.Control type="text" placeholder="Search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
                         <Button variant='warning' type="submit" className='w-25'>
                             <MagnifyingGlassIcon className="size-2" />
                         </Button>
