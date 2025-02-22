@@ -1,7 +1,7 @@
 ---
 title: "The Legend of Zelda: Breath of the Wild – A Revolution in Open-World Gaming"
 date: "2025-02-18"
-tags: ["action-adventure", "zelda", "open-world", "nintendo"]
+tags: ["action", "adventure", "zelda", "open-world", "nintendo"]
 img: "zelda-breath-of-the-wild.jpg"
 ---
 

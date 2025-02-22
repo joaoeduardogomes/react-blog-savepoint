@@ -1,7 +1,8 @@
 import Page from '@/components/Page'
 import React, { useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
-import matter from 'gray-matter' 
+import matter from 'gray-matter'
+import Link from 'next/link'
 
 const PostComponent = ({ title, image, category }) => {
     const [content, setContent] = useState("")
@@ -30,9 +31,23 @@ const PostComponent = ({ title, image, category }) => {
     return (
         <Page>
             <p>Date: {metadata.date ? formatDate(metadata.date) : "No date available"}</p>
-            <p>Tags: {metadata.tags ? metadata.tags.join(", ") : "No tags available"}</p>
+            <p>
+                Tags:{" "}
+                {metadata.tags && metadata.tags.length > 0 ? (
+                    metadata.tags.map((tag, index) => (
+                        <React.Fragment key={index}>
+                            <Link href={`/q=${encodeURIComponent(tag)}`} passHref>
+                                {tag}
+                            </Link>
+                            {index < metadata.tags.length - 1 && ", "}
+                        </React.Fragment>
+                    ))
+                ) : (
+                    "No tags available"
+                )}
+            </p>
 
-            <main className='postArea'>
+            <main className='postArea p-4'>
                 <img src={`/game-imgs/${metadata.img}`} alt={`${title} banner`} className='postImg' />
                 <ReactMarkdown>
                     {content}
