@@ -36,7 +36,7 @@ const PostComponent = ({ title, image, category }) => {
                 {metadata.tags && metadata.tags.length > 0 ? (
                     metadata.tags.map((tag, index) => (
                         <React.Fragment key={index}>
-                            <Link href={`/q=${encodeURIComponent(tag)}`} passHref>
+                            <Link href={`/q=${encodeURIComponent(tag)}`} passHref className='text-decoration-none fw-semibold'>
                                 {tag}
                             </Link>
                             {index < metadata.tags.length - 1 && ", "}
