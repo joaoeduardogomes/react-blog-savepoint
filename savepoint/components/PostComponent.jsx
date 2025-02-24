@@ -47,12 +47,12 @@ const PostComponent = ({ title, image, category }) => {
                 )}
             </p>
 
-            <main className='postArea '>
+            <article className='postArea '>
                 <img src={`/game-imgs/${metadata.img}`} alt={`${title} banner`} className='postImg' />
                 <ReactMarkdown>
                     {content}
                 </ReactMarkdown>
-            </main>
+            </article>
         </Page>
     )
 }
