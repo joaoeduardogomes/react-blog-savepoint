@@ -17,6 +17,12 @@ body {
 
 .list-card {
   width: 50rem;
+
+  img {
+    width: 50%;
+    min-width: 50%;
+    max-width: 50%;
+  }
 }
 
 @media screen and (max-width: 768px) {
