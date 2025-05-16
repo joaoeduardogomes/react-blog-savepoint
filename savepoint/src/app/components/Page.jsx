@@ -10,7 +10,7 @@ const Page = (props) => {
 
     function handleSubmit(event) {
         event.preventDefault();
-        router.push(`/q=${searchTerm.toLocaleLowerCase()}`)
+        router.push(`/search?q=${searchTerm.toLocaleLowerCase()}`)
     }
     
     return (

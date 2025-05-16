@@ -26,7 +26,7 @@ function getPostsFromDirectory(directory, category = "") {
                 title: data.title || slug.replace("-", " "),
                 date: data.date || "Unknown Date",
                 tags: data.tags || [],
-                image: `/game-imgs/${data.img || 'default.jpg'}`,
+                image: `/game-imgs/${data.img}`,
                 slug,
                 category
             })

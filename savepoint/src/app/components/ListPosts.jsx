@@ -3,13 +3,18 @@ import Link from "next/link";
 import { Button, Card } from "react-bootstrap";
 import Page from "./Page";
 import usePosts from "../hooks/usePosts";
+import Loading from "../loading";
 
 export default function ListPosts({pageName = "erro", postsFilter = "", query = "", message=""}) {
 
-    const { posts, visiblePosts, isAllPostsVisible, loadMorePosts } = usePosts(10, 10);
+    const { posts, visiblePosts, isAllPostsVisible, loadMorePosts, loading } = usePosts(10, 10);
 
     const normalizedQuery = query ? query.replace(/['\u2019]/g, '') : '';
     const regex = normalizedQuery ? new RegExp(normalizedQuery, 'i') : null;
+
+    if (loading) {
+        return <Loading />;
+    }
 
     return (
         <Page>

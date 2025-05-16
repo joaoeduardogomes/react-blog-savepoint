@@ -4,15 +4,21 @@ import { Button, Card } from "react-bootstrap";
 import Link from "next/link"
 import Page from "./Page";
 import usePosts from "../hooks/usePosts";
+import Loading from "../loading";
 
 export default function HomePage() {
 
-    const { posts, visiblePosts, isAllPostsVisible, loadMorePosts } = usePosts(6);
+    const { posts, visiblePosts, isAllPostsVisible, loadMorePosts, loading } = usePosts(6);
+
+    if (loading) {
+        return <Loading />;
+    }
 
     return (
         <>
             <Page>
                 <h1 className="text-center">Posts</h1>
+                
                 <div className="container d-flex flex-wrap justify-content-center gap-4 ">
                     {posts.slice(0, visiblePosts).map(post => (
                         <Card key={post.slug} style={{ width: '18rem' }} className="shadow-sm">
