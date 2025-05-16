@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useState } from "react";
 
 export default function usePosts(postsPerPage = 6, postsToLoad = 6) {

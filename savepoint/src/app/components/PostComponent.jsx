@@ -1,8 +1,8 @@
-import Page from '@/components/Page'
 import React, { useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import matter from 'gray-matter'
 import Link from 'next/link'
+import Page from './Page'
 
 const PostComponent = ({ title, image, category }) => {
     const [content, setContent] = useState("")
@@ -35,12 +35,12 @@ const PostComponent = ({ title, image, category }) => {
                 Tags:{" "}
                 {metadata.tags && metadata.tags.length > 0 ? (
                     metadata.tags.map((tag, index) => (
-                        <>
+                        <React.Fragment key={tag}>
                             <Link href={`/q=${encodeURIComponent(tag)}`} passHref className='text-decoration-none fw-semibold'>
                                 {tag}
                             </Link>
                             {index < metadata.tags.length - 1 && ", "}
-                        </>
+                        </React.Fragment>
                     ))
                 ) : (
                     "No tags available"

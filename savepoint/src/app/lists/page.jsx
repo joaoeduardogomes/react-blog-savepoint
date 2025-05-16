@@ -1,4 +1,4 @@
-import ListPosts from "@/components/ListPosts";
+import ListPosts from "../components/ListPosts";
 
 export default function Lists() {
 

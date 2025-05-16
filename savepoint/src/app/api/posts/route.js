@@ -1,10 +1,12 @@
+// app/api/posts/route.js
+
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
 const postsDirectory = path.join(process.cwd(), 'public', 'posts')
 
-function getPostsFromDirectory(directory, category="") {
+function getPostsFromDirectory(directory, category = "") {
     const files = fs.readdirSync(directory)
     let posts = []
 
@@ -13,12 +15,9 @@ function getPostsFromDirectory(directory, category="") {
         const isDirectory = fs.statSync(filePath).isDirectory()
 
         if (isDirectory) {
-            // gets all posts from subdirectories
             const nestedPosts = getPostsFromDirectory(filePath, file)
             posts = [...posts, ...nestedPosts]
-        }
-        else if (file.endsWith('.md')) {
-            // extracts metadata and content from a .md file
+        } else if (file.endsWith('.md')) {
             const fileContent = fs.readFileSync(filePath, 'utf-8')
             const { data } = matter(fileContent)
             const slug = file.replace('.md', '')
@@ -27,9 +26,9 @@ function getPostsFromDirectory(directory, category="") {
                 title: data.title || slug.replace("-", " "),
                 date: data.date || "Unknown Date",
                 tags: data.tags || [],
-                image: `/game-imgs/${data.img}`,
-                slug: slug,
-                category: category
+                image: `/game-imgs/${data.img || 'default.jpg'}`,
+                slug,
+                category
             })
         }
     })
@@ -37,8 +36,8 @@ function getPostsFromDirectory(directory, category="") {
     return posts
 }
 
-export default function handler(req, res) {
+export async function GET() {
     const posts = getPostsFromDirectory(postsDirectory)
     posts.sort((a, b) => new Date(b.date) - new Date(a.date))
-    res.status(200).json(posts)
+    return Response.json(posts)
 }

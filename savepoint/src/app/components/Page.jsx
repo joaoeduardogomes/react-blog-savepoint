@@ -1,7 +1,8 @@
+"use client"
 import React, { useState } from 'react'
 import { Button, Container, Form, Nav, Navbar } from 'react-bootstrap'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 const Page = (props) => {
     const router = useRouter();

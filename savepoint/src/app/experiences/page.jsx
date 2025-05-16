@@ -1,6 +1,5 @@
-import ListPosts from "@/components/ListPosts";
-import usePosts from "@/hooks/usePosts";
-
+"use client"
+import ListPosts from "../components/ListPosts";
 
 export default function Experiences() {
 

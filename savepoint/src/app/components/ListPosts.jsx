@@ -1,7 +1,8 @@
-import Page from "@/components/Page";
-import usePosts from "@/hooks/usePosts";
+"use client"
 import Link from "next/link";
 import { Button, Card } from "react-bootstrap";
+import Page from "./Page";
+import usePosts from "../hooks/usePosts";
 
 export default function ListPosts({pageName = "erro", postsFilter = "", query = "", message=""}) {
 
