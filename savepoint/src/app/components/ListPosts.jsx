@@ -5,8 +5,7 @@ import Page from "./Page";
 import usePosts from "../hooks/usePosts";
 import Loading from "../loading";
 
-export default function ListPosts({pageName = "erro", postsFilter = "", query = "", message=""}) {
-
+export default function ListPosts({ pageName = "erro", postsFilter = "", query = "", message = "" }) {
     const { posts, visiblePosts, isAllPostsVisible, loadMorePosts, loading } = usePosts(10, 10);
 
     const normalizedQuery = query ? query.replace(/['\u2019]/g, '') : '';
@@ -16,27 +15,32 @@ export default function ListPosts({pageName = "erro", postsFilter = "", query = 
         return <Loading />;
     }
 
+    const filteredPosts = posts.filter(post => {
+        if (!query) {
+            return post.category === postsFilter;
+        }
+
+        const normalizedTags = post.tags.map(tag => tag.replace(/['\u2019]/g, ''));
+        return (
+            post.category === postsFilter ||
+            normalizedTags.some(tag => regex.test(tag))
+        );
+    });
+
+    const visibleFilteredPosts = filteredPosts.slice(0, visiblePosts);
+
     return (
         <Page>
             <h1 className="mb-3 text-center">{pageName}</h1>
             <p className="mb-5 text-center">{message}</p>
 
             <div className="container d-flex flex-wrap justify-content-center gap-4">
-                {posts
-                    .filter(post => {
-                        if (!query) {
-                            return post.category === postsFilter;
-                        }
-    
-                        const normalizedTags = post.tags.map(tag => tag.replace(/['\u2019]/g, ''));
-                        return (post.category === postsFilter || normalizedTags.some(tag => regex.test(tag)));
-                    })
-                    .slice(0, visiblePosts)
-                    .map(post => (
-                        <Card key={post.slug}
-                            className="list-card d-flex flex-row shadow-sm"
-                        >
-                            <Card.Img variant="top" src={post.image} className="w-50"/>
+                {visibleFilteredPosts.length === 0 ? (
+                    <p className="text-center fs-4">No post matches your search.</p>
+                ) : (
+                    visibleFilteredPosts.map(post => (
+                        <Card key={post.slug} className="list-card d-flex flex-row shadow-sm">
+                            <Card.Img variant="top" src={post.image} className="w-50" />
                             <Card.Body className="d-flex flex-column justify-content-between">
                                 <Card.Title className="fw-bold">{post.title}</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted">{post.date}</Card.Subtitle>
@@ -47,10 +51,11 @@ export default function ListPosts({pageName = "erro", postsFilter = "", query = 
                                 </Link>
                             </Card.Body>
                         </Card>
-                    ))}
+                    ))
+                )}
             </div>
 
-            {!isAllPostsVisible && (
+            {visibleFilteredPosts.length > 0 && !isAllPostsVisible && (
                 <div className="d-flex justify-content-center mt-3">
                     <Button variant="warning" onClick={loadMorePosts}>
                         Load More
@@ -58,5 +63,5 @@ export default function ListPosts({pageName = "erro", postsFilter = "", query = 
                 </div>
             )}
         </Page>
-    )
+    );
 }
