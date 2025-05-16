@@ -5,7 +5,7 @@ export default function usePosts(postsPerPage = 6, postsToLoad = 6) {
     const [posts, setPosts] = useState([]);
     const [visiblePosts, setVisiblePosts] = useState(postsPerPage); 
     const [isAllPostsVisible, setIsAllPostsVisible] = useState(false);
-    const [loading, setLoading] = useState(true); // ✅ novo estado de carregamento
+    const [loading, setLoading] = useState(true); // inicia o carregamento
 
     useEffect(() => {
         setLoading(true); // ativa o carregamento ao iniciar fetch
@@ -16,7 +16,7 @@ export default function usePosts(postsPerPage = 6, postsToLoad = 6) {
                 if (data.length <= postsPerPage) setIsAllPostsVisible(true);
             })
             .catch(err => console.error("Error fetching posts:", err))
-            .finally(() => setLoading(false)); // ✅ encerra carregamento
+            .finally(() => setLoading(false)); //encerra o carregamento
     }, [postsPerPage]);
 
     function loadMorePosts() {
@@ -25,5 +25,5 @@ export default function usePosts(postsPerPage = 6, postsToLoad = 6) {
         if (newVisiblePosts >= posts.length) setIsAllPostsVisible(true);
     }
 
-    return { posts, visiblePosts, isAllPostsVisible, loadMorePosts, loading }; // ✅ exporta loading
+    return { posts, visiblePosts, isAllPostsVisible, loadMorePosts, loading };
 }
