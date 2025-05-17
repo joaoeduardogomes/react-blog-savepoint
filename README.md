@@ -27,7 +27,7 @@ The biggest challenge was getting data from the Markdown files and rendering it 
 
 ## How to use
 
-You can visit the blog by [clicking this link in vercel](https://react-blog-savepoint.vercel.app/).
+You can visit the blog by [clicking this link in vercel](https://savepoint-teal.vercel.app/).
 
 ## Notes
 
