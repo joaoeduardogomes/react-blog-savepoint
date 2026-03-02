@@ -16,16 +16,18 @@ export default function ListPosts({ pageName = "erro", postsFilter = "", query =
     }
 
     const filteredPosts = posts.filter(post => {
-        if (!query) {
-            return post.category === postsFilter;
-        }
+    if (query) {
+        if (!Array.isArray(post.tags)) return false;
 
-        const normalizedTags = post.tags.map(tag => tag.replace(/['\u2019]/g, ''));
-        return (
-            post.category === postsFilter ||
-            normalizedTags.some(tag => regex.test(tag))
+        const normalizedTags = post.tags.map(tag =>
+            tag.replace(/['\u2019]/g, '')
         );
-    });
+
+        return normalizedTags.some(tag => regex.test(tag));
+    }
+
+    return post.category === postsFilter;
+});
 
     const visibleFilteredPosts = filteredPosts.slice(0, visiblePosts);
 
