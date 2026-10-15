@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
-import matter from 'gray-matter'
+import matter from '@11ty/gray-matter'
 import Link from 'next/link'
 import Page from './Page'
 
